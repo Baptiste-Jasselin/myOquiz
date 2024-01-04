@@ -1,0 +1,11 @@
+{
+  "name": "s05-oquiz-red-enzoclock",
+  "version": "1.0.0",
+  "description": "Oquiz Katsudon",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": ["quiz", "platform"],
+  "author": "katsudon@oclock.io",
+  "license": "ISC"
+}
