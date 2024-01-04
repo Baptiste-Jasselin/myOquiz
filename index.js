@@ -1,6 +1,6 @@
 // Importer les dépendances
 const express = require("express");
-const router = require("./router");
+const router = require("./src/router");
 
 // Créer une app Express
 const app = express();
