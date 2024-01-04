@@ -12,6 +12,9 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
+// Servir statiquement le contenu du dossier public
+app.use(express.static("./public"));
+
 // Brancher le router
 app.use(router);
 
