@@ -1,5 +1,8 @@
 # Node modules
 node_modules/
 
+# Env variables
+.env
+
 # Fichiers cachés MacOS
 .DS_Store
