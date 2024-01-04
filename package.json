@@ -5,7 +5,13 @@
   "directories": {
     "doc": "docs"
   },
-  "keywords": ["quiz", "platform"],
+  "keywords": [
+    "quiz",
+    "platform"
+  ],
   "author": "katsudon@oclock.io",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
