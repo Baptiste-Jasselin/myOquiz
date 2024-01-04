@@ -8,6 +8,9 @@ const router = require("./src/router");
 // Créer une app Express
 const app = express();
 
+// Configurer EJS
+app.set("view engine", "ejs");
+app.set("views", "./src/views");
 
 // Brancher le router
 app.use(router);
