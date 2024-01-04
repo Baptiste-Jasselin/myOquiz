@@ -1,14 +1,13 @@
 // Importer les dépendances
 const express = require("express");
+const router = require("./router");
 
 // Créer une app Express
 const app = express();
 
 
-// Configurer l'app 
-app.get("/", (req, res) => {
-  res.send("Ok");
-});
+// Brancher le router
+app.use(router);
 
 
 // Lancer le serveur
