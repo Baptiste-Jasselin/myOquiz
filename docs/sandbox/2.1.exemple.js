@@ -1,5 +1,6 @@
 // On refait notre fabrique à sorciers mais avec la POO (class)
 
+// Convention : le nom de la classe est en PascalCase (avec une majuscule)
 class Wizard { // Notre "factory", notre usine à fabriquer des Wizard
 
   // Attributs de ma classe (facultatif de les lister, mais bonne pratique)

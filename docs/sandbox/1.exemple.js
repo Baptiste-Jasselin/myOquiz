@@ -77,3 +77,4 @@ const PersonFactory = {
 
 const ron = PersonFactory.make("Ron", "Weasley", 10);
 ron.sayHi();
+

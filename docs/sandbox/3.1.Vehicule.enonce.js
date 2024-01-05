@@ -25,5 +25,4 @@ Instancier quelques véhicules pour tester !
 - une clio C3
 - une moto
 - une trotinette electrique
-
 */
