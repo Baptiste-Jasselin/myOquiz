@@ -1,4 +1,4 @@
-const Vehicule = require("./5.1.Vehicule");
+const Vehicule = require("./5.Vehicule");
 
 const clio = new Vehicule(4, 50);
 
