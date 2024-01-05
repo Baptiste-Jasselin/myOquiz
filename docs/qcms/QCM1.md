@@ -2,7 +2,7 @@
 
 Un `wireframe` est : 
 - un board de gestion de projet
-- une maquette fonctionnelle d'une page
+- une maquette fonctionnelle d'une page (croquis)
 - la description complète d'une fonctionnalité
 - un scenario de test
 
