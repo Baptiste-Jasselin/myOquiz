@@ -5,7 +5,7 @@ class Vehicule {
   isStarted;
 
   constructor(nbOfWheels, enginePower) {
-    this.nbOfWheels = nbOfWheels;
+    this.nbOfWheels = nbOfWheels; // this = l'instance = clio || trotinette || ferrari
     this.enginePower = enginePower;
     this.isStarted = false;
   }
