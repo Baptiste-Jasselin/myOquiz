@@ -1,10 +1,14 @@
 const Tag = require("./Tag");
+const Level = require("./Level");
 
+
+// ===== TAG ====
 const cookingTag = new Tag({ id: 1, name: "Cuisine" });
-
 console.log(cookingTag);
 
-// cookingTag.save(); // Et paf ! ca fait la requête SQL pour insérer dans la BDD !
-// Objectif lundi : remplacer le dataMapper avec des "CLASSE" qui accède à la BDD 
-// => c'est le design pattern "Active Record"
+// ==== Level ===
+const hardLevel = new Level({ id: 1, name: "Difficile" });
+console.log(hardLevel);
 
+const easyLevel = new Level({ id: 2, name: "Facile" });
+console.log(easyLevel.name);
