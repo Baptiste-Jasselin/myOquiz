@@ -1,5 +1,6 @@
-class Question {
-  id;
+const CoreModel = require("./CoreModel");
+
+class Question extends CoreModel {
   description;
   wiki;
   anecdote;
@@ -7,8 +8,9 @@ class Question {
   quiz_id;
   answer_id;
 
-  constructor(obj) {
-    this.id = obj.id;
+  constructor(obj) { // obj = { id, wiki, ... }
+    super(obj); // On "appelle" le super()
+
     this.description = obj.description;
     this.wiki = obj.wiki;
     this.anecdote = obj.anecdote;

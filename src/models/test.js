@@ -80,3 +80,5 @@ const question1 = new Question({
   quiz_id: quiz1.id
 });
 console.log(question1);
+
+// obj
