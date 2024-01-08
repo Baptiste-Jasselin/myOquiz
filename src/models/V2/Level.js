@@ -3,13 +3,17 @@
 const db = require("../../database/database-client");
 
 class Level {
+  // ==== Attributes ====
   id;
   name;
 
+  // ==== Constructor ====
   constructor(obj) {
     this.id = obj.id;
     this.name = obj.name;
   }
+
+  // ==== Instance methods ====
 
   // Methode Active Record n°1 : CREATE
   async insert() {
@@ -40,6 +44,40 @@ class Level {
     } else { // Sinon, il y a eu une erreur qqpart, on retourne false
       return false;
     }
+  }
+
+  // ==== Class methods ====
+
+  // Méthode Active Record n°3 : READ (findById)
+  static async findById(researchedId) {
+    const result = await db.query('SELECT * FROM "level" WHERE id = $1', [researchedId]);
+    
+    const rawLevel = result.rows[0]; // { id, name, created_at, updated_at } (objet brut)
+    if (!rawLevel) { return null; }
+
+    const level = new Level(rawLevel); //  Level { id, name } (instance de Classe)
+    return level; // En renvoyant l'instance de classe, on récupère également toutes les méthodes de l'instance : insert(), delete(), update(), ...
+  }
+
+  // Méthode Active Record n°4 : READ (findByName)
+  static async findByName(researchedName) {
+    // Retrouve dans la BDD le "premier" Level avec le nom de recherché et le renvoie
+    const result = await db.query(`
+      SELECT * FROM "level" WHERE name = $1
+    `, [researchedName]);
+
+    const foundLevel = result.rows[0]; // { id, name, created_at, updated_at } // Comme d'habitude 
+    if (! foundLevel) { return null; } // Si aucun level avec le nom demandé n'est trouvé, on renvoie null -> typique Active Record
+
+    // foundLevel = { id, name, created_at, updated_at }
+    const level = new Level(foundLevel); // Level { id, name, update, delete }
+    return level;
+
+    // Pourquoi on renvoie :
+    // return new Level(rawLevel) // { id, name, update(), delete(), insert() } ==> ceci est un Active Record
+    
+    // Plutôt que renvoyer directement : 
+    // return rawLevel; // { id, name, created_at, updated_at } ==> Ceci est un plain objet JavaScript sans méthodes d'accès à la BDD
   }
 
 }
