@@ -1,11 +1,10 @@
-// On aimerait coder la "fabrique à Tag" => la classe Tag
+const CoreModel = require("./CoreModel");
 
-class Tag {
-  id;
+class Tag extends CoreModel {
   name;
 
   constructor(obj) { // obj = { id, name }
-    this.id = obj.id;
+    super(obj);
     this.name = obj.name;
   }
 }
