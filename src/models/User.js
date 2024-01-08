@@ -45,7 +45,6 @@ class User {
     //   throw new Error("Veuillez saisir un email valide.");
     // }
 
-
     // Méthode 2 : un module NPM
     if (! validator.validate(value)) { // Si l'email n'est PAS validé par le validator
       throw new Error("Veuillez saisir un email valide."); // throw permet de "lever" l'erreur qu'on a définie, donc d'arrêter le programme avec cette erreur !

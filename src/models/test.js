@@ -1,6 +1,8 @@
 const Tag = require("./Tag");
 const Level = require("./Level");
 const User = require("./User");
+const Quiz = require("./Quiz");
+const Question = require("./Question");
 
 
 // ===== TAG ====
@@ -60,3 +62,21 @@ chuck.email = "toto@oclock.io";
 console.log(chuck.email);
 
 
+// ==== Quiz =====
+
+const quiz1 = new Quiz({
+  id: 1,
+  title: "Quiz de la Tartiflette",
+  description: "Vérifions si vous êtes incollable sur la tartif'",
+  author_id: chuck.id
+});
+console.log(quiz1);
+
+// ==== Question ====
+const question1 = new Question({
+  id: 1,
+  description: "Comment couper les oignons ?",
+  level_id: easyLevel.id,
+  quiz_id: quiz1.id
+});
+console.log(question1);
