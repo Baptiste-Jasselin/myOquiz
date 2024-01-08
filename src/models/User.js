@@ -34,15 +34,19 @@ class User {
   }
 
   set email(value) { // Vérifions que l'email est valide !
-    // méthode 0 : tester si il y a un '@' => bof
+    // Méthode 0 : tester si il y a un '@' => bof
     // if (! value.includes("@")) { // Si pas de @
     //   throw new Error("Veuillez saisir un email valide.");
     // }
 
-    // méthode 1 : REGEX
-    // après la pause si motivé :) 
+    // Méthode 1 : REGEX
+    // const regex = /\w+@\w+\.\w{2,3}/; // entre deux '/'
+    // if (! regex.test(value)) { // si value (nouveau email) match PAS bien la REGEX, c'est pas ok
+    //   throw new Error("Veuillez saisir un email valide.");
+    // }
 
-    // méthode 2 : un module NPM
+
+    // Méthode 2 : un module NPM
     if (! validator.validate(value)) { // Si l'email n'est PAS validé par le validator
       throw new Error("Veuillez saisir un email valide."); // throw permet de "lever" l'erreur qu'on a définie, donc d'arrêter le programme avec cette erreur !
     }
