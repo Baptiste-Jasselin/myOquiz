@@ -46,6 +46,11 @@ class Level {
     }
   }
 
+  // Méthode Active Record n°6 : UPDATE
+  async update() {
+    await db.query(`UPDATE "level" SET name = $1 WHERE id = $2`, [this.name, this.id]);
+  }
+
   // ==== Class methods ====
 
   // Méthode Active Record n°3 : READ (findById)
@@ -78,6 +83,31 @@ class Level {
     
     // Plutôt que renvoyer directement : 
     // return rawLevel; // { id, name, created_at, updated_at } ==> Ceci est un plain objet JavaScript sans méthodes d'accès à la BDD
+  }
+
+  // Méthode Active Record n°5 : READ (findAll)
+  static async findAll() {
+    // Objectif : renvoyer tous les levels de la BDD
+    
+    // Etape 1 : récupérer tous les raw levels en BDD
+    const result = await db.query('SELECT * FROM "level"');
+    const rowLevels = result.rows; // [{}, {}, {}]
+
+    // Etape 2 : renvoyer les Active Record plutôt que des objet JS simple
+
+    /* Méthode 1 : on créé un array vide et on push dedans
+    const levels = []; // [Level{}, Level{}, Level{}]
+    // Pour chaque rawLevel (on boucle), on y ajoute un Level dans le tableau !
+    rowLevels.forEach(rowLevel => {
+      levels.push(new Level(rowLevel));
+      //  ^ []     ^ Level{}
+    });
+    */
+
+    // Méthode 2 : avec un .map
+    const levels = rowLevels.map(rowLevel => new Level(rowLevel));
+
+    return levels;
   }
 
 }

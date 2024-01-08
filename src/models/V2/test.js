@@ -31,5 +31,17 @@ async function main() {
   console.log(notFoundLevel); // null
 
 
+  // Read n°3 (bis) - findAll
+  const levels = await Level.findAll();
+  console.log(levels); // [ Level{}, Level{}, Level{}, Level{}]
+
+
+  // === update===
+  const moyenLevel = new Level({ name: "Moyen "});
+  await moyenLevel.insert(); // Prépare le test, on créé un Level pour pouvoir le modifier ensuite
+
+  moyenLevel.name = "Bof !";
+  await moyenLevel.update(); // Cette méthode appelle la BDD è
+
 }
 
