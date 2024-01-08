@@ -1,4 +1,4 @@
-class Level {
+class Level { // PascalCase -> majuscule à la première lettre ==> convention ! 
   // Attributs (facultatif, mais recommandé : d'un coup d'oeil, on voit les propriétés de nos objets)
   id;
   name;
