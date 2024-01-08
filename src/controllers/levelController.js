@@ -1,17 +1,29 @@
 const dataMapper = require("../database/dataMapper");
+const Level = require("../models/V1/Level");
 
 
 const levelController = {
   async renderLevelsPage(req, res) {
-    try {
+    // ====== DATAMAPPER ====
+    // const levels = await dataMapper.getAllLevels(); 
 
-      const levels = await dataMapper.getAllLevels();
-      res.render("levels", { levels });
+    // ====== MODELS ====
+    const levels = await Level.findAll(); // implémenter la fonction findAll
 
-    } catch (error) {
-      console.error(error); // Pour aider à debug
-      res.status(500).send("Une erreur est survenue."); // TODO: faire la page 500
-    }
+    res.render("levels", { levels });
+  },
+
+  async createLevel(req, res) {
+    const name = req.body.name; // { name: "HardCore" }
+
+    // ==== DATAMAPPER ====
+    // const level = await dataMapper.createLevel({ name: name });
+
+    // ====== MODELS ====
+    const level = new Level({ name: name });
+    await level.insert();
+
+    res.end();
   }
 };
 
