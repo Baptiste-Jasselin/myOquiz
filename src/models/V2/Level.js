@@ -1,6 +1,6 @@
 // On simplifie notre modèle au maximum pour faciliter la compréhension
 
-const db = require("../../database/database-client");
+const db = require("../../database.deprecated/database-client");
 const CoreModel = require("./CoreModel");
 
 class Level extends CoreModel {

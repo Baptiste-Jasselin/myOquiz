@@ -1,4 +1,4 @@
-const db = require("../../database/database-client");
+const db = require("../../database.deprecated/database-client");
 const CoreModel = require("./CoreModel");
 
 class User extends CoreModel {

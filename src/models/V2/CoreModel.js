@@ -1,4 +1,4 @@
-const db = require("../../database/database-client");
+const db = require("../../database.deprecated/database-client");
 
 class CoreModel {
   id;
