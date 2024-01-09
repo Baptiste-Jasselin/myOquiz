@@ -91,7 +91,7 @@ class Level {
     
     // Etape 1 : récupérer tous les raw levels en BDD
     const result = await db.query('SELECT * FROM "level"');
-    const rowLevels = result.rows; // [{}, {}, {}]
+    const rawLevels = result.rows; // [{}, {}, {}]
 
     // Etape 2 : renvoyer les Active Record plutôt que des objet JS simple
 
@@ -105,7 +105,7 @@ class Level {
     */
 
     // Méthode 2 : avec un .map
-    const levels = rowLevels.map(rowLevel => new Level(rowLevel));
+    const levels = rawLevels.map(rawLevel => new Level(rawLevel));
 
     return levels;
   }

@@ -1,14 +1,14 @@
 const db = require("../../database/database-client");
+const CoreModel = require("./CoreModel");
 
-class User {
-  id;
+class User extends CoreModel {
   firstname;
   lastname;
   email;
   password;
 
   constructor(obj) {
-    this.id = obj.id;
+    super(obj);
     this.firstname = obj.firstname;
     this.lastname = obj.lastname;
     this.email = obj.email;
