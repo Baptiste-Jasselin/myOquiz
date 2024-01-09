@@ -19,26 +19,6 @@ class User extends CoreModel {
 
   // ===== Méthodes d'instance ======
   
-  async insert() {
-    const result = await db.query(`
-      INSERT INTO "user" 
-        ("firstname", "lastname", "email", "password")
-      VALUES
-        ($1, $2, $3, $4)
-      RETURNING 
-        *
-    `, [
-      this.firstname,
-      this.lastname,
-      this.email,
-      this.password
-    ]);
-
-    // result = { rowCount, oid, rows: [{ id: 7, email: "", password: "", ... }]}
-    const insertedId = result.rows[0].id;
-    this.id = insertedId;
-  }
-
   async delete() {
     try {
 
