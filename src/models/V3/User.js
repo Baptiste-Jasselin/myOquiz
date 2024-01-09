@@ -17,6 +17,7 @@ User.init({
   password: {
     type: DataTypes.TEXT,
     allowNull: false
+    
   }
 
   // Documentation des correspondances des types Sequelize <-> Postgres : https://sequelize.org/docs/v7/models/data-types/
