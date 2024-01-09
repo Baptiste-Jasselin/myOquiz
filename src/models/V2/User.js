@@ -49,6 +49,30 @@ class User {
     }
   }
 
+  async update() {
+    const query = `
+      UPDATE 
+        "user"
+      SET 
+        "firstname" = $2,
+        "lastname" = $3,
+        "email" = $4,
+        "password" = $5
+      WHERE 
+        "id" = $1
+    `;
+    const values = [
+      this.id,
+      this.firstname,
+      this.lastname,
+      this.email,
+      this.password
+    ];
+    
+    const result = await db.query(query, values);
+    return result.rowCount > 0;
+  }
+
   // ===== Méthodes statiques ======
 
   // Equivalent de la méthode "insert()" mais en "static" (pour voir, parce qu'on a posé la question)

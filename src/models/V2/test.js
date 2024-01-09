@@ -68,8 +68,12 @@ async function main() {
     password: "It's leviooosaaaa"
   }); // D'abord inséré puis instancié, puis retourné !
   
-  await hermione.delete(); // OK !
+  // await hermione.delete(); // OK !
 
-  
+  // UPDATE 
+  hermione.email = "hermione.granger@hogwarts.io";
+  hermione.password = "TenPointsForGrinf"; // Modifier l'AR
+  await hermione.update(); // Persister la modification en base
+
 }
 
