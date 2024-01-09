@@ -49,13 +49,22 @@ async function main() {
   // ======= USER =========
   // ======================
 
-  const user = new User({
+  const harry = new User({
     firstname: "Harry",
     lastname: "Potter",
     email: "harry@hogwarts.io",
     password: "Gr1ff0ndor4Ever!"
   });
+  await harry.insert(); // Insérer le user en BDD
+  console.log(harry); // L'ID est bien recupéré également !
 
-  console.log(user);
+
+  // Equivalent en une ligne avec une méthode Statique :
+  // const hermione = await User.create({
+  //   firstname: "Hermione",
+  //   lastname: "Granger",
+  //   email: "hermione@hogwarts.io",
+  //   password: "It's leviooosaaaa"
+  // });
 }
 
