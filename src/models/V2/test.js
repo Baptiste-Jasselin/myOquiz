@@ -1,4 +1,5 @@
 const Level = require("./Level");
+const User = require("./User");
 
 main();
 
@@ -43,5 +44,18 @@ async function main() {
   moyenLevel.name = "Bof !";
   await moyenLevel.update(); // Cette méthode appelle la BDD è
 
+
+  // ======================
+  // ======= USER =========
+  // ======================
+
+  const user = new User({
+    firstname: "Harry",
+    lastname: "Potter",
+    email: "harry@hogwarts.io",
+    password: "Gr1ff0ndor4Ever!"
+  });
+
+  console.log(user);
 }
 
