@@ -111,7 +111,6 @@ class User {
     return new User(rawUser);
   }
 
-
   static async findByEmail(researchedEmail) {
     const query = `SELECT * FROM "user" WHERE "email" = $1`;
     const values = [researchedEmail];
@@ -123,7 +122,13 @@ class User {
     return new User(rawUser);
   }
 
+  static async findAll() {
+    const result = await db.query(`SELECT * FROM "user"`);
 
+    const rawUsers = result.rows; // [{}, {}, {}]
+    const users = rawUsers.map(rawUser => new User(rawUser)); // [User{}, User{}, User{}]
+    return users;
+  }
 
 }
 

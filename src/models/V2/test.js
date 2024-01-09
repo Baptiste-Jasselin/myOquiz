@@ -86,5 +86,10 @@ async function main() {
   const unexistingUser = await User.findByEmail("toto@oclock.io");
   console.log(unexistingUser); // null
 
+  // FindAll
+  
+  const users = await User.findAll();
+  console.log(users);
+
 }
 
