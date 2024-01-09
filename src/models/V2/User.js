@@ -100,7 +100,31 @@ class User {
     // return user;
   }
 
+  static async findById(researchId) {
+    const query = `SELECT * FROM "user" WHERE id = $1`;
+    const values = [researchId];
+    const result = await db.query(query, values); // { rows: [{ ... }]}    OU    { rows: [] }
+
+    const rawUser = result.rows[0]; // { id, firstname, lastname, email, password }   OU   undefined
+    if (! rawUser) { return null; } 
+
+    return new User(rawUser);
+  }
+
+
+  static async findByEmail(researchedEmail) {
+    const query = `SELECT * FROM "user" WHERE "email" = $1`;
+    const values = [researchedEmail];
+    const result = await db.query(query, values); // { rows: [{ ... }]}    OU    { rows: [] }
+
+    const rawUser = result.rows[0]; // { id, firstname, lastname, email, password }   OU   undefined
+    if (! rawUser) { return null; } 
+
+    return new User(rawUser);
+  }
+
+
+
 }
 
 module.exports = User;
-

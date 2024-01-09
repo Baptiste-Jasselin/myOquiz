@@ -75,5 +75,16 @@ async function main() {
   hermione.password = "TenPointsForGrinf"; // Modifier l'AR
   await hermione.update(); // Persister la modification en base
 
+
+  // Find By ID
+  const user3 = await User.findById(3);
+  console.log(user3);
+
+  // Find By Email
+  const chuck = await User.findByEmail("chuck@oclock.io");
+  console.log(chuck); // { ... }
+  const unexistingUser = await User.findByEmail("toto@oclock.io");
+  console.log(unexistingUser); // null
+
 }
 
