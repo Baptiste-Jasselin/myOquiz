@@ -7,6 +7,8 @@ class User extends CoreModel {
   email;
   password;
 
+  static tableName = "user"; // le nom de la table dans la BDD
+
   constructor(obj) {
     super(obj);
     this.firstname = obj.firstname;
@@ -120,14 +122,6 @@ class User extends CoreModel {
     if (! rawUser) { return null; } 
 
     return new User(rawUser);
-  }
-
-  static async findAll() {
-    const result = await db.query(`SELECT * FROM "user"`);
-
-    const rawUsers = result.rows; // [{}, {}, {}]
-    const users = rawUsers.map(rawUser => new User(rawUser)); // [User{}, User{}, User{}]
-    return users;
   }
 
 }

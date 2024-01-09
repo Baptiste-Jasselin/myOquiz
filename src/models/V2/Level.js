@@ -1,15 +1,18 @@
 // On simplifie notre modèle au maximum pour faciliter la compréhension
 
 const db = require("../../database/database-client");
+const CoreModel = require("./CoreModel");
 
-class Level {
+class Level extends CoreModel {
   // ==== Attributes ====
-  id;
   name;
+
+  // ==== Attributs statiques ===
+  static tableName = "level";
 
   // ==== Constructor ====
   constructor(obj) {
-    this.id = obj.id;
+    super(obj);
     this.name = obj.name;
   }
 
@@ -86,29 +89,29 @@ class Level {
   }
 
   // Méthode Active Record n°5 : READ (findAll)
-  static async findAll() {
-    // Objectif : renvoyer tous les levels de la BDD
+  // static async findAll() {
+  //   // Objectif : renvoyer tous les levels de la BDD
     
-    // Etape 1 : récupérer tous les raw levels en BDD
-    const result = await db.query('SELECT * FROM "level"');
-    const rawLevels = result.rows; // [{}, {}, {}]
+  //   // Etape 1 : récupérer tous les raw levels en BDD
+  //   const result = await db.query('SELECT * FROM "level"');
+  //   const rawLevels = result.rows; // [{}, {}, {}]
 
-    // Etape 2 : renvoyer les Active Record plutôt que des objet JS simple
+  //   // Etape 2 : renvoyer les Active Record plutôt que des objet JS simple
 
-    /* Méthode 1 : on créé un array vide et on push dedans
-    const levels = []; // [Level{}, Level{}, Level{}]
-    // Pour chaque rawLevel (on boucle), on y ajoute un Level dans le tableau !
-    rowLevels.forEach(rowLevel => {
-      levels.push(new Level(rowLevel));
-      //  ^ []     ^ Level{}
-    });
-    */
+  //   /* Méthode 1 : on créé un array vide et on push dedans
+  //   const levels = []; // [Level{}, Level{}, Level{}]
+  //   // Pour chaque rawLevel (on boucle), on y ajoute un Level dans le tableau !
+  //   rowLevels.forEach(rowLevel => {
+  //     levels.push(new Level(rowLevel));
+  //     //  ^ []     ^ Level{}
+  //   });
+  //   */
 
-    // Méthode 2 : avec un .map
-    const levels = rawLevels.map(rawLevel => new Level(rawLevel));
+  //   // Méthode 2 : avec un .map
+  //   const levels = rawLevels.map(rawLevel => new Level(rawLevel));
 
-    return levels;
-  }
+  //   return levels;
+  // }
 
 }
 
