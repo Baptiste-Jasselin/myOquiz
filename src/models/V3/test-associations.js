@@ -1,4 +1,4 @@
-const { Question, Level, User, Quiz, Answer } = require("./associations");
+const { Question, Level, User, Quiz, Answer, Tag } = require("./associations");
 
 main();
 
@@ -48,6 +48,14 @@ async function main() {
 
   const badAnswer = await Answer.findByPk(946, { include: "question_it_answers" });
   console.log(badAnswer.toJSON()); // badAnswer.question_it_answers = null ici !
+
+  // Récupérer une quiz et tous ses tags
+  const quiz1 = await Quiz.findByPk(1, { include : "tags" });
+  console.log(quiz1.toJSON());
+
+  // Récupérer un tag (et tous ses quizzes associés)
+  const cookingTag = await Tag.findOne({ where: { name: "Gastronomie" }, include: "quizzes" });
+  console.log(cookingTag.toJSON());
 }
 
 

@@ -3,6 +3,7 @@ const Question = require("./Question");
 const User = require("./User");
 const Quiz = require("./Quiz");
 const Answer = require("./Answer");
+const Tag = require("./Tag");
 
 // Sequelize : 
 // - One-To-One : hasOne + belongsTo
@@ -68,8 +69,20 @@ Question.belongsTo(Answer, {
 });
 
 // Quiz <-> Tag
+Quiz.belongsToMany(Tag, {
+  through: "quiz_has_tag",
+  as: "tags",
+  foreignKey: "quiz_id", // Depuis la table de liaison, comment accéder à Quiz ?
+  // otherKey: "tag_id" // Facultatif : ajouter le nom de la clé de l'autre côté
+});
+Tag.belongsToMany(Quiz, {
+  through: "quiz_has_tag",
+  as: "quizzes",
+  foreignKey: "tag_id" // Depuis la table de liaison, comment accéder à Tag ?
+  // otherKey: "quiz_id" // Facultatif : ajouter le nom de la clé de l'autre côté
+});
 
 
 
 // On ré-exporte toutes nos associations 
-module.exports = { Question, Level, User, Quiz, Answer };
+module.exports = { Question, Level, User, Quiz, Answer, Tag };
