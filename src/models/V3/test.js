@@ -113,6 +113,5 @@ async function test() {
 
   // Alternativement, en 1 ligne
   await chuck.update({ lastname: "Norris" });
-
 }
 
