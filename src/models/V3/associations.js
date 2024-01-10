@@ -20,7 +20,6 @@ Level.hasMany(Question, {
   as: "questions" // quand on requête un level, je veux pouvoir récupérer les "questions" associées au level
 });
 
-
 // User <-> Quiz (One-To-Many)
 User.hasMany(Quiz, {
   foreignKey: "author_id",
