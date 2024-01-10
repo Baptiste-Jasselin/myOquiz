@@ -1,4 +1,4 @@
-const { Question, Level, User, Quiz } = require("./associations");
+const { Question, Level, User, Quiz, Answer } = require("./associations");
 
 main();
 
@@ -29,6 +29,25 @@ async function main() {
   // Récupérer une question (et le quiz duquel elle appartient)
   const firstQuestion = await Question.findByPk(1, { include: "quiz" });
   console.log(firstQuestion.toJSON());
+
+  // Récupérer une question (et ses propositions)
+  const secondQuestion = await Question.findByPk(2, { include: "propositions" });
+  console.log(secondQuestion.toJSON());
+
+  // Récupérer une proposition (et savoir à quelle question elle appartient) --> weird use case !
+  const propositions = await Answer.findAll({ include: "question" });
+  console.log(JSON.stringify(propositions, null, 2));
+
+  // Récupérer une question (et sa bonne réponse !)
+  const thirdQuestion = await Question.findByPk(3, { include: "good_answer" });
+  console.log(thirdQuestion.toJSON());
+
+  // Récupérer la question à partir d'une "bonne réponse" (encore plus weird)
+  const goodAnswer = await Answer.findByPk(1, { include: "question_it_answers" });
+  console.log(goodAnswer.toJSON()); // goodAnswer.question_it_answers = { ... }
+
+  const badAnswer = await Answer.findByPk(946, { include: "question_it_answers" });
+  console.log(badAnswer.toJSON()); // badAnswer.question_it_answers = null ici !
 }
 
 
