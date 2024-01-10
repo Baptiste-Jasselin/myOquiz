@@ -1,6 +1,10 @@
 const { Op } = require("sequelize");
 const Level = require("./Level");
 const User = require("./User");
+const Tag = require("./Tag");
+const Quiz = require("./Quiz");
+const Question = require("./Question");
+const Answer = require("./Answer");
 
 test();
 
@@ -113,5 +117,22 @@ async function test() {
 
   // Alternativement, en 1 ligne
   await chuck.update({ lastname: "Norris" });
+
+
+  // ==== TAG ====
+  const tag = await Tag.findByPk(1);
+  console.log(tag.get());
+
+  // ==== Quiz ===
+  const quizzes = await Quiz.findAll();
+  console.log(quizzes.length); // 18
+
+  // === Question ===
+  const question = await Question.findOne({ where: { description: "Toto" }});
+  console.log(question); // null
+
+  // === Answer ====
+  const answers = await Answer.findAll({ limit: 2 });
+  console.log(answers.length); // 2
 }
 
