@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const Level = require("./Level");
 const User = require("./User");
+const Tag = require("./Tag");
 
 test();
 
@@ -113,5 +114,10 @@ async function test() {
 
   // Alternativement, en 1 ligne
   await chuck.update({ lastname: "Norris" });
+
+
+  // ==== TAG ====
+  const tag = await Tag.findByPk(1);
+  console.log(tag.get());
 }
 
