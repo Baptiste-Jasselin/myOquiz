@@ -1,4 +1,4 @@
-const { Question, Level } = require("./associations");
+const { Question, Level, User, Quiz } = require("./associations");
 
 main();
 
@@ -14,4 +14,16 @@ async function main() {
   });
   console.log(level.toJSON());
 
+  // Récupérer un User (et ses quizzes)
+  const user = await User.findByPk(1, { include: "quizzes" });
+  console.log(user.toJSON());
+
+  // Récupérer les Quizzes (et leur author)
+  const quizzes = await Quiz.findAll({ include: "author" });
+  console.log(JSON.stringify(quizzes, null, 2));
+
+
 }
+
+
+// Note : faire des query complexes !

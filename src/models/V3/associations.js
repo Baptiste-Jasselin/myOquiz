@@ -1,5 +1,7 @@
 const Level = require("./Level");
 const Question = require("./Question");
+const User = require("./User");
+const Quiz = require("./Quiz");
 
 // Sequelize : 
 // - One-To-One : hasOne + belongsTo
@@ -19,7 +21,16 @@ Level.hasMany(Question, {
 });
 
 
-// User <-> Quiz
+// User <-> Quiz (One-To-Many)
+User.hasMany(Quiz, {
+  foreignKey: "author_id",
+  as: "quizzes" // quand je requête un User, je veux également "ses quizzes"
+});
+
+Quiz.belongsTo(User, {
+  foreignKey: "author_id",
+  as: "author" // quand je requête un Quiz, je veux "son author"
+});
 
 
 // Quiz <-> Question
@@ -33,4 +44,4 @@ Level.hasMany(Question, {
 
 
 // On ré-exporte toutes nos associations 
-module.exports = { Question, Level };
+module.exports = { Question, Level, User, Quiz };
