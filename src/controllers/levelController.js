@@ -1,4 +1,4 @@
-const Level = require("../models/V3/Level"); // Import du Level Sequelize
+const { Level } = require("../models"); // Quand le fichier n'est pas précisé, JS va chercher le fichier nommé index.js dans le dossier demandé !
 
 const levelController = {
   async renderLevelsPage(req, res) {
