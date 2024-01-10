@@ -32,7 +32,15 @@ Quiz.belongsTo(User, {
 });
 
 
-// Quiz <-> Question
+// Quiz <-> Question (One-To-Many)
+Quiz.hasMany(Question, {
+  foreignKey: "quiz_id",
+  as: "questions"
+});
+Question.belongsTo(Quiz, {
+  foreignKey: "quiz_id",
+  as: "quiz"
+});
 
 
 // Question <-> Answer

@@ -22,7 +22,13 @@ async function main() {
   const quizzes = await Quiz.findAll({ include: "author" });
   console.log(JSON.stringify(quizzes, null, 2));
 
+  // Récupérer un quiz (et ses questions)
+  const quiz = await Quiz.findOne({ include: "questions" });
+  console.log(quiz.toJSON());
 
+  // Récupérer une question (et le quiz duquel elle appartient)
+  const firstQuestion = await Question.findByPk(1, { include: "quiz" });
+  console.log(firstQuestion.toJSON());
 }
 
 
